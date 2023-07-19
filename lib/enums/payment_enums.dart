@@ -1,0 +1,1 @@
+enum PaymentEnums { CASH, BANKING }

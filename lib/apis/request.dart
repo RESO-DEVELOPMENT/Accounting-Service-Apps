@@ -91,7 +91,7 @@ class CustomInterceptors extends Interceptor {
 
 class MyRequest {
   static BaseOptions options = BaseOptions(
-      baseUrl: AppConstants.BASE_URL,
+      baseUrl: AppConstants.BASE_URL_DEV,
       // baseUrl: 'https://localhost:7131/api/v1/',
       headers: {
         Headers.contentTypeHeader: "application/json",
@@ -128,7 +128,7 @@ class MyRequest {
         } else {
           showAlertDialog(
             title: "Lỗi",
-            content: e.response?.data["Error"],
+            content: e.error.toString(),
           );
         }
         handler.next(e);
@@ -145,10 +145,10 @@ class MyRequest {
   }
 }
 
-class PaymentRequest {
+class MISARequest {
   static BaseOptions options = BaseOptions(
       // baseUrl: 'https://localhost:7102/api/v1/',
-      baseUrl: 'https://payment.endy.bio/api/v1/',
+      baseUrl: AppConstants.BASE__MISA_URL_PROD,
       headers: {
         Headers.contentTypeHeader: "application/json",
         Headers.acceptHeader: "text/plain",
@@ -157,7 +157,7 @@ class PaymentRequest {
       receiveTimeout: Duration(seconds: 5));
   late Dio _inner;
 
-  PaymentRequest() {
+  MISARequest() {
     _inner = Dio(options);
     _inner.interceptors.add(CustomInterceptors());
     _inner.interceptors.add(InterceptorsWrapper(
@@ -190,7 +190,7 @@ class PaymentRequest {
     ));
   }
 
-  Dio get paymentRequest {
+  Dio get misaRequest {
     return _inner;
   }
 
@@ -202,8 +202,8 @@ class PaymentRequest {
 final requestObj = MyRequest();
 final request = requestObj.request;
 
-final paymentRequestObj = PaymentRequest();
-final paymentRequest = paymentRequestObj.paymentRequest;
+final misaRequestObj = MISARequest();
+final misaRequest = misaRequestObj.misaRequest;
 
 class MyHttpOverrides extends HttpOverrides {
   @override

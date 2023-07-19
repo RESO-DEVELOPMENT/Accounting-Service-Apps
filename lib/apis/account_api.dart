@@ -6,7 +6,7 @@ import '../utils/share_pref.dart';
 import 'request.dart';
 
 class AccountData {
-  Future<Account?> login(String username, String password) async {
+  Future<AccountModel?> login(String username, String password) async {
     try {
       Response response = await request.post("auth/login",
           data: {"username": username, "password": password});
@@ -15,12 +15,11 @@ class AccountData {
         final user = response.data;
         final accessToken = user['accessToken'] as String;
         final userRole = user['role'] as String;
-
         requestObj.setToken = accessToken;
-        paymentRequestObj.setToken = accessToken;
+        // .setToken = accessToken;
         setToken(accessToken, userRole);
 
-        Account userResponse = Account.fromJson(user);
+        AccountModel userResponse = AccountModel.fromJson(user);
         return userResponse;
       } else {
         return null;

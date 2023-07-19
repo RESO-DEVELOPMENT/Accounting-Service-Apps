@@ -52,7 +52,7 @@ Future<bool> setToken(String value, String userRole) async {
   }
 
   //Config expire time of token based on role of user login to system
-  if (userRole == UserRole.StoreManager.toString()) {
+  if (userRole == RoleEnums.StoreManager.name) {
     expireDate = DateFormat("yyyy-MM-dd hh:mm:ss")
         .format(DateTime.now().add(const Duration(days: 30)));
   } else {
@@ -84,23 +84,23 @@ Future<bool> setThemeMode(bool isDark) async {
   return prefs.setBool('darkMode', isDark);
 }
 
-Future<bool?> getThemeMode() async {
+Future<bool> getThemeMode() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  return prefs.getBool('darkMode');
+  return prefs.getBool('darkMode') ?? false;
 }
 
-Future<void> setUserInfo(Account userDTO) async {
+Future<void> setUserInfo(AccountModel userDTO) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   final userInfo = userDTO.toJson();
   prefs.setString("userInfo", jsonEncode(userInfo));
 }
 
-Future<Account?> getUserInfo() async {
+Future<AccountModel?> getUserInfo() async {
   final SharedPreferences pref = await SharedPreferences.getInstance();
   String? userData = pref.getString("userInfo");
-  Account? userInfo;
+  AccountModel? userInfo;
   if (userData != null) {
-    userInfo = Account.fromJson(jsonDecode(userData));
+    userInfo = AccountModel.fromJson(jsonDecode(userData));
   }
   return userInfo;
 }

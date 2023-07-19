@@ -3,15 +3,20 @@ class AppConstants {
   static const double APP_VERSION = 1.1;
 
   // api
-  static const String BASE_URL = 'YOUR_BASE_URL_HERE';
-  static const String CONFIG_URI = '/api/v1/config/table';
-  static const String CATEGORY_URI = '/api/v1/categories';
-  static const String PRODUCT_URI = '/api/v1/products/latest';
-  static const String CATEGORY_PRODUCT_URI = '/api/v1/categories/products';
-  static const String PLACE_ORDER_URI = '/api/v1/table/order/place';
-  static const String ORDER_DETAILS_URI = '/api/v1/table/order/details?';
-  static const String ORDER_LIST =
-      '/api/v1/table/order/list?branch_table_token=';
+  static const String BASE_URL_PRODUCTION =
+      'https://accounting.endy.bio/api/v1/';
+  static const String BASE_URL_DEV = 'https://localhost:7083/api/v1/';
+
+  //api Misa Sync
+  static const String BASE__MISA_URL_PROD = 'https://actapp.misa.vn/';
+  static const String BASE__MISA_URL_DEV = 'https://testactapp.misa.vn/';
+
+  static const String SYNC_SAVOUCHER_MISA = 'misa/sync/savoucher/';
+
+  //ProoOfSale api
+  static const String PROOF_OF_SALE_CREATE = 'proof-of-sale';
+  static const String INVENTORY_ITEM_FILTER = 'misa/inventory-item';
+  static const String PROOF_OF_SALE_DETAILS = 'proof-of-sale/';
 
   // Shared Key
   static const String THEME = 'theme';

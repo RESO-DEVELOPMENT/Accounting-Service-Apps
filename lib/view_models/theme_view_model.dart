@@ -1,25 +1,25 @@
+import 'package:accounting_service/utils/share_pref.dart';
+import 'package:accounting_service/view_models/base_view_model.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../utils/app_constants.dart';
 
-class ThemeController extends GetxController {
-  final SharedPreferences sharedPreferences;
-  ThemeController({required this.sharedPreferences}) {
+class ThemeViewModel extends BaseViewModel {
+  ThemeViewModel() {
     _loadCurrentTheme();
   }
-
   bool _darkTheme = false;
   bool get darkTheme => _darkTheme;
 
   void toggleTheme() {
     _darkTheme = !_darkTheme;
-    sharedPreferences.setBool(AppConstants.THEME, _darkTheme);
-    update();
+    setThemeMode(_darkTheme);
+    notifyListeners();
   }
 
   void _loadCurrentTheme() async {
-    _darkTheme = sharedPreferences.getBool(AppConstants.THEME) ?? false;
-    update();
+    _darkTheme = await getThemeMode();
+    notifyListeners();
   }
 }

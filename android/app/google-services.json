@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "450533182221",
+    "project_id": "accounting-service-c1433",
+    "storage_bucket": "accounting-service-c1433.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450533182221:android:45013d720b26bd29c43e44",
+        "android_client_info": {
+          "package_name": "com.example.accounting_service"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "450533182221-07al9he3ois6jd5kqt6gmf47asn3rndl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF_ofWYIifeIFyxwIvVTqKO53Ljw2EUNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "450533182221-07al9he3ois6jd5kqt6gmf47asn3rndl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

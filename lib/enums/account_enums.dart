@@ -1,1 +1,1 @@
-enum UserRole { StoreManager, AreaManger, Accounting }
+enum RoleEnums { StoreManager, AreaManager, Accounting }

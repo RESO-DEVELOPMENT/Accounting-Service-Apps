@@ -1,30 +1,26 @@
+import 'package:accounting_service/apis/account_api.dart';
+import 'package:accounting_service/apis/request.dart';
+import 'package:accounting_service/view_models/login_view_model.dart';
+import 'package:accounting_service/view_models/misa_view_model.dart';
+import 'package:accounting_service/view_models/proof_of_sale_view_model.dart';
+import 'package:accounting_service/models/account.dart';
+import 'package:accounting_service/utils/share_pref.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../controllers/theme_controller.dart';
+import '../view_models/startup_view_model.dart';
+import '../view_models/theme_view_model.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+import '../firebase_options.dart';
+import '../routes/routes_constraints.dart';
 
 Future<void> init() async {
-  // Core
-  final sharedPreferences = await SharedPreferences.getInstance();
-  Get.lazyPut(() => sharedPreferences);
-  // // Repository
-  // Get.lazyPut(
-  //     () => SplashRepo(sharedPreferences: Get.find(), apiClient: Get.find()));
-  // Get.lazyPut(() => LanguageRepo());
-  // Get.lazyPut(() => ProductRepo(apiClient: Get.find()));
-  // Get.lazyPut(() => CartRepo(sharedPreferences: Get.find()));
-  // Get.lazyPut(
-  //     () => OrderRepo(sharedPreferences: Get.find(), apiClient: Get.find()));
-
-  // // Controller
-  Get.lazyPut(() => ThemeController(sharedPreferences: Get.find()));
-  // Get.lazyPut(() => SplashController(splashRepo: Get.find()));
-  // Get.lazyPut(() => LocalizationController(sharedPreferences: Get.find()));
-  // Get.lazyPut(() => LanguageController(sharedPreferences: Get.find()));
-  // Get.lazyPut(() => ProductController(productRepo: Get.find()));
-  // Get.lazyPut(() => CartController(cartRepo: Get.find()));
-  // Get.lazyPut(() => PromotionalController());
-  // Get.lazyPut(() => OrderController(orderRepo: Get.find()));
-
-  // Retrieving localized data
+  Get.put(StartUpViewModel());
+  Get.put(ThemeViewModel());
+  Get.put(LoginViewModel());
+  Get.put(ProofOfSaleViewModel());
+  Get.put(MisaViewModel());
+  requestObj.setToken = await getToken();
 }
